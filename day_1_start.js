@@ -7,20 +7,15 @@ function syncReadFile(filename) {
     return arr;
 }
 
-// Create array, and convert to ints
-const arr = syncReadFile(__dirname + '/input.txt');
-numArr = [];
-for (let n = 0; n < arr.length; n++) {
-    numArr[n] = parseInt(arr[n]);
-}
+// Create array
+const arr = syncReadFile(__dirname + '/day_1_input.txt');
 
-// Count up numbers in new array
+// Count up numbers in new array countArr
 const countArr = [];
-let count = 0;
-let num = 0;
-for (let i = 0; i < numArr.length; i++) {
-    num = numArr[i];
-    if ( isNaN(num) ) {
+let count = 0, num = 0;
+for (let i = 0; i < arr.length; i++) {
+    num = parseInt(arr[i]);
+    if ( isNaN(num) ) { // If we are evaluating a blank line, add count to countArr, reset count
         countArr.push(count);
         count = 0;
     } else {
@@ -28,8 +23,9 @@ for (let i = 0; i < numArr.length; i++) {
     }
 }
 
-// Sort descending, return first value
+// Part 1: Sort descending, return first value
 countArr.sort( function(a,b){return b - a});
 console.log("Part 1: " + countArr[0]);
+// Part 2: Return first three values
 let sum = countArr[0] + countArr[1] + countArr[2]
 console.log("Part 2: "+ sum)
