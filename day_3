@@ -1,0 +1,34 @@
+// Import module, read data file and create array
+const {readFileSync, promises: fsPromises, readFile, readSync} = require('fs');
+
+function readSyncFile(filename) {
+    const contents = readFileSync(filename, 'utf-8');
+    const arr = contents.split(/\r?\n/);
+    return arr;
+}
+
+// Function to find the common element between the two rucksacks
+function findCommonElement(arr1, arr2) {
+    for (let i = 0; i < arr1.length; i++) {
+        for (let j = 0; j < arr2.length; j++) {
+            if (arr1[i] === arr2[j]) {
+                return arr1[i];
+            }
+        }
+    }
+}
+
+const rucksackArr = readSyncFile(__dirname + '/day_3_data.txt');
+let count = 0, priority = 0; regEx = /[A-Z]/;
+for (let k = 0; k < rucksackArr.length; k++) {
+    const arr1 = rucksackArr[k].slice(0, (rucksackArr[k].length / 2) );
+    const arr2 = rucksackArr[k].slice((rucksackArr[k].length / 2), rucksackArr[k].length);
+    let commonItem = findCommonElement(arr1, arr2);
+    priority = parseInt(commonItem, 36) - 9; // Check to see if we have a capital letter
+    if ( regEx.test(commonItem) ) {
+        priority += 26;
+    }
+    count += priority;
+}
+
+console.log("Total sum: " + count);
