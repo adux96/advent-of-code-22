@@ -23,40 +23,24 @@ function resultsArray() {
     return results;
 }
 
-//Function to determine how many points for what I played
-function symbolPoints(sym) {
-    if (sym === 'X') {
-        return 1;
-    } else if (sym === 'Y') {
-        return 2;
-    } else {
-        return 3;
-    }
-}
-
-//Function to determine how many points for what I played
-function outcomePoints(outcome) {
-    if (outcome === 'X') {
-        return 0;
-    } else if (outcome === 'Y') {
-        return 3;
-    } else {
-        return 6;
-    }
-}
-
 // Create array
 const arr = syncReadFile(__dirname + '/day_2_data.txt');
 let totalScore = 0;
-let outcome = '';
-let symbol = '';
 const resultArr = resultsArray();
+const symbols = {
+    'X': 1,
+    'Y': 2,
+    'Z': 3
+};
+const outcomeScore = {
+    'X': 0,
+    'Y': 3,
+    'Z': 6
+};
 
 // Loop through array, add up total score
 for (let i = 0; i < arr.length; i++) {
-    outcome = arr[i][2];
-    symbol = resultArr[arr[i]];
-    totalScore += outcomePoints(outcome) + symbolPoints(symbol);
+    totalScore += outcomeScore[arr[i][2]] + symbols[resultArr[arr[i]]];
 }
 
 console.log("totalScore: " + totalScore);
