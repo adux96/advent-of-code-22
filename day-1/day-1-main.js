@@ -8,7 +8,7 @@ function syncReadFile(filename) {
 }
 
 // Create array
-const arr = syncReadFile(__dirname + '/day_1_input.txt');
+const arr = syncReadFile(__dirname + '/input.txt');
 
 // Count up numbers in new array countArr
 const countArr = [];
