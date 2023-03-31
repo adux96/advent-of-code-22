@@ -24,7 +24,7 @@ function resultsArray() {
 }
 
 // Create array
-const arr = syncReadFile(__dirname + '/day_2_data.txt');
+const arr = syncReadFile(__dirname + '/input.txt');
 let totalScore = 0;
 const resultArr = resultsArray();
 const symbols = {
