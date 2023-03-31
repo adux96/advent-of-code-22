@@ -8,7 +8,7 @@ function syncReadFile(filename) {
 }
 
 // Create array
-const arr = syncReadFile(__dirname + '/day_2_data.txt');
+const arr = syncReadFile(__dirname + '/data.txt');
 let totalScore = 0;
 const symbols = {
     'X': 1,
